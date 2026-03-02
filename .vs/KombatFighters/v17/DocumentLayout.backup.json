@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|c:\\users\\tomfa\\documents\\github\\kombatfighters\\kombatfighters\\pages\\creator.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|solutionrelative:kombatfighters\\pages\\creator.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|c:\\users\\tomfa\\documents\\github\\kombatfighters\\kombatfighters\\pages\\creator.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|solutionrelative:kombatfighters\\pages\\creator.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|c:\\users\\tomfa\\documents\\github\\kombatfighters\\kombatfighters\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|solutionrelative:kombatfighters\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|c:\\users\\tomfa\\documents\\github\\kombatfighters\\kombatfighters\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|solutionrelative:kombatfighters\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|c:\\users\\tomfa\\documents\\github\\kombatfighters\\kombatfighters\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|solutionrelative:kombatfighters\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|c:\\users\\tomfa\\documents\\github\\kombatfighters\\kombatfighters\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|solutionrelative:kombatfighters\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|c:\\users\\tomfa\\documents\\github\\kombatfighters\\kombatfighters\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{185601ED-A5D7-4A8A-A6E9-E591590E02EE}|KombatFighters\\KombatFighters.csproj|solutionrelative:kombatfighters\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "KombatFighters\\wwwroot\\css\\app.css",
+              "ToolTip": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "KombatFighters\\wwwroot\\css\\app.css",
+              "ViewState": "AgIAACYAAAAAAAAAAAAUwJEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-07T14:46:04.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Creator.razor.css",
+              "DocumentMoniker": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Pages\\Creator.razor.css",
+              "RelativeDocumentMoniker": "KombatFighters\\Pages\\Creator.razor.css",
+              "ToolTip": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Pages\\Creator.razor.css",
+              "RelativeToolTip": "KombatFighters\\Pages\\Creator.razor.css",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAC8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-06T15:56:12.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Creator.razor",
+              "DocumentMoniker": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Pages\\Creator.razor",
+              "RelativeDocumentMoniker": "KombatFighters\\Pages\\Creator.razor",
+              "ToolTip": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Pages\\Creator.razor",
+              "RelativeToolTip": "KombatFighters\\Pages\\Creator.razor",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T15:43:58.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "KombatFighters\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Pages\\Home.razor",
+              "RelativeToolTip": "KombatFighters\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T15:41:53.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "KombatFighters\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "KombatFighters\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T15:52:18.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "KombatFighters\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "KombatFighters\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T15:40:05.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Program.cs",
+              "RelativeDocumentMoniker": "KombatFighters\\Program.cs",
+              "ToolTip": "C:\\Users\\tomfa\\Documents\\GitHub\\KombatFighters\\KombatFighters\\Program.cs",
+              "RelativeToolTip": "KombatFighters\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T15:07:42.2Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

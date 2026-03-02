@@ -1,0 +1,117 @@
+﻿@page "/creator"
+
+<PageTitle>Kombat Fighters Creator</PageTitle>
+
+<h3>Création de cartes</h3>
+
+<div class="page-structure">
+    <form action="/" method="post" class="global-form">
+        <h4>Style général</h4>
+        <div class="inner-form">
+            <div class="color-background">
+                <label for="color">Couleur de fond</label>
+                <input class="input" type="color" name="color" />
+            </div>
+            <div class="recto-card">
+                <label for="file">Recto des cartes</label>
+                @* <input type="image" name="image" src="" alt="image input" /> *@
+                <input class="input" type="file" accept="image/*, text/*" name="file" />
+            </div>
+        </div>
+    </form>
+    <hr />
+    <div class="card-section">
+        <h4>Style par carte</h4>
+        <div class="list-card">
+            @foreach (var carte in mesCartes)
+            {
+                <div class="type-card" @onclick="() => OuvrirDialogue(carte)">
+                    @* TODO : rendre la div cliquable *@
+                    <div class="img-card">
+                        @* TODO : insérer une image d'exemple de carte *@
+                        <p>Image : @carte.Id</p>
+                    </div>
+                    <div class="describe-card">
+                        @* TODO : insérer une description de carte *@
+                        <h4>@carte.Titre</h4>
+                        <p>@carte.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@* BOITE DE DIALOGUE (MODALE) *@
+@* Elle ne s'affiche que si une carte a été cliquée (donc n'est pas null) *@
+@if (carteSelectionnee != null)
+{
+    <div class="modal-overlay" @onclick="FermerDialogue">
+
+        <div class="modal-box" @onclick:stopPropagation="true">
+
+            <div class="header-box">
+                <h3>@carteSelectionnee.Titre</h3>
+                <button @onclick="FermerDialogue" style="cursor:pointer;">❌</button>
+            </div>
+
+            <hr />
+            <div class="form-card">
+                <div class="other-info">
+                    <input type="text" name="name" value="" />
+                    <input type="file" name="name" value="" />
+                </div>
+                <div class="table-attack">
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                    <input class="case-attack" type="checkbox" name="name" value="" />
+                </div>
+            </div>
+
+            <button class="btn btn-primary">Sauvegarder</button>
+        </div>
+
+    </div>
+}
+
+@code {
+    // 1. Définition d'une petite classe pour représenter une carte (temporaire)
+    public class CarteInfo
+    {
+        public int Id { get; set; }
+        public string Titre { get; set; }
+        public string Description { get; set; }
+    }
+
+    // 2. Variable qui retient quelle carte est actuellement ouverte (null = aucune)
+    private CarteInfo? carteSelectionnee = null;
+
+    // 3. Liste de fausses données pour tester l'affichage
+    private List<CarteInfo> mesCartes = new List<CarteInfo>
+    {
+        new CarteInfo { Id = 1, Titre = "Guerrier de Feu", Description = "Attaque brûlante" },
+        new CarteInfo { Id = 2, Titre = "Dragon d'Eau", Description = "Défense impénétrable" },
+        new CarteInfo { Id = 3, Titre = "Ninja de l'Ombre", Description = "Rapide et discret" },
+        new CarteInfo { Id = 4, Titre = "Golem de Pierre", Description = "Lourd et puissant" },
+        new CarteInfo { Id = 5, Titre = "Archer Elfe", Description = "Précision mortelle" },
+        new CarteInfo { Id = 6, Titre = "Mage Noir", Description = "Magie interdite" },
+    };
+
+    // 4. Méthode appelée quand on clique sur une carte
+    private void OuvrirDialogue(CarteInfo carte)
+    {
+        carteSelectionnee = carte;
+    }
+
+    // 5. Méthode pour fermer
+    private void FermerDialogue()
+    {
+        carteSelectionnee = null;
+    }
+}
