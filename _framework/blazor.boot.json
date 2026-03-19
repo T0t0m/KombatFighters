@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "KombatFighters",
   "resources": {
-    "hash": "sha256-D7h3k6boO+oFDziNOUWIo/PmVMXJQ8jk0uA/gnck4mY=",
+    "hash": "sha256-Gr2c7ItabKFSaFpLmx0ZqMUu8rKkk08I9Yd4dstunic=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-NljIbpK/1KCj0+knpX8U77Rbl5kTtfFIuFjK7AuczEw="
     },
@@ -47,7 +47,7 @@
       "System.Text.Json.wasm": "sha256-1KgIAMAl2smt63FtxqMONS0r7ox8LJZ7eD4HpHMyFeQ=",
       "System.Text.RegularExpressions.wasm": "sha256-nE7XCiyeCswUnRGdXOQvcHP+XMWXcToACrazpZlocBI=",
       "System.Private.CoreLib.wasm": "sha256-38MITWygIKVnCNc62MRKO/BcXhtakZvElV33ot3Ijgo=",
-      "KombatFighters.wasm": "sha256-o43a6XMgzbsw4iRW4c3UIcqGF6irIydPG0881xdyRDQ="
+      "KombatFighters.wasm": "sha256-Tj3K0zq6AMW7LVoglsv+bJ8e3Axd5xiA05watF8jd7Y="
     }
   },
   "cacheBootResources": true,
