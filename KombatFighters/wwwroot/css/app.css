@@ -1,7 +1,12 @@
+/* ==========================================================================
+   PARTIE 1 : LES STYLES DE BASE (Générés par Blazor)
+   ========================================================================== */
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* Enlève la bordure moche par défaut quand on clique sur un titre */
 h1:focus {
     outline: none;
 }
@@ -10,12 +15,14 @@ a, .btn-link {
     color: #0071c1;
 }
 
+/* Style du bouton principal de l'application */
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
 
+/* Ajoute un bel effet de halo bleu autour des champs/boutons quand on clique dessus (focus) */
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
@@ -24,23 +31,27 @@ a, .btn-link {
     padding-top: 1.1rem;
 }
 
+/* --- VALIDATION DES FORMULAIRES --- */
+/* Bordure verte si le champ est valide et a été modifié */
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
-
+/* Bordure rouge si le champ est invalide */
 .invalid {
     outline: 1px solid red;
 }
-
+/* Texte d'erreur en rouge */
 .validation-message {
     color: red;
 }
 
+/* --- GESTION DES ERREURS BLAZOR --- */
+/* La barre jaune en bas de l'écran qui s'affiche si ton code C# "plante" */
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-    display: none;
+    display: none; /* Cachée par défaut */
     left: 0;
     padding: 0.6rem 1.25rem 0.7rem 1.25rem;
     position: fixed;
@@ -55,8 +66,9 @@ a, .btn-link {
         top: 0.5rem;
     }
 
+/* Le composant d'erreur spécifique à Blazor (souvent utilisé pour cibler l'erreur d'un composant précis) */
 .blazor-error-boundary {
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
+    background: url(data:image/svg+xml;base64,PHN2Zy...) no-repeat 1rem/1.8rem, #b32121;
     padding: 1rem 1rem 1rem 3.7rem;
     color: white;
 }
@@ -65,6 +77,8 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
+/* --- ÉCRAN DE CHARGEMENT BLAZOR --- */
+/* Le petit cercle qui tourne au lancement du site */
 .loading-progress {
     position: relative;
     display: block;
@@ -102,9 +116,12 @@ code {
     color: #c02d76;
 }
 
-/* --- A METTRE DANS wwwroot/css/app.css --- */
 
-/* L'arrière-plan sombre */
+/* ==========================================================================
+   PARTIE 2 : TES STYLES PERSONNALISÉS (La Modale de Création)
+   ========================================================================== */
+
+/* L'arrière-plan sombre qui recouvre tout le site */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -112,29 +129,31 @@ code {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10000; /* Valeur très haute pour passer au-dessus du menu Blazor */
+    z-index: 10000; /* Valeur très haute pour s'assurer de passer au-dessus du menu latéral Blazor */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(2px); /* Optionnel : ajoute un petit flou joli en arrière plan */
+    justify-content: center; /* Centre la boite horizontalement */
+    align-items: center; /* Centre la boite verticalement */
+    backdrop-filter: blur(2px); /* Effet moderne de flou sur l'arrière-plan */
 }
 
-/* La boite blanche */
+/* La boite blanche contenant le formulaire */
 .modal-box {
     background-color: white;
     padding: 25px;
     border-radius: 8px;
     max-width: 90%;
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    animation: apparition 0.3s ease-out;
-    /* Important pour que le contenu ne déborde pas si la boite est petite */
+    animation: apparition 0.3s ease-out; /* Lance l'animation définie plus bas à l'ouverture */
+    /* Important : Si le contenu est trop grand pour l'écran, cela crée une barre de défilement interne 
+       au lieu de faire déborder la boite hors de l'écran. */
     max-height: 90vh;
     overflow-y: auto;
 }
 
+    /* L'en-tête de la modale (Titre + Bouton fermer) */
     .modal-box .header-box {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-between; /* Pousse le titre à gauche et le bouton à droite */
         align-items: center;
     }
 
@@ -142,53 +161,59 @@ code {
             margin: 0;
         }
 
+        /* Le bouton rouge pour fermer la modale */
         .modal-box .header-box button {
             background-color: #feb2b2;
             border: hidden;
             border-radius: 1rem;
             width: 3rem;
             height: 3rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease; /* Rend le changement de couleur fluide au survol */
         }
 
             .modal-box .header-box button:hover {
-                background-color: #fe6868;
+                background-color: #fe6868; /* Rouge plus foncé au survol */
             }
 
+    /* Le conteneur principal du formulaire à l'intérieur de la modale */
     .modal-box .form-card {
         display: flex;
-        gap: 1rem;
+        gap: 1rem; /* Espace entre la zone "Infos" et la zone "Attaque" */
         padding: 0 1rem;
     }
 
+        /* La zone des infos classiques (Nom, PV, etc.) */
         .modal-box .form-card .other-info {
             flex: auto;
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Aligne les champs de texte de haut en bas */
             gap: 1rem;
         }
 
+        /* La zone contenant la grille de cases d'attaque */
         .modal-box .form-card .table-attack {
             flex: auto;
-            max-width: 9rem;
+            max-width: 9rem; /* Limite la largeur pour forcer les cases à passer à la ligne (création de la grille) */
             min-width: 9rem;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Permet aux cases de passer à la ligne suivante */
             display: flex;
         }
 
+            /* Le style individuel d'une case d'attaque (apparemment des carrés de 3x3 rem) */
             .modal-box .form-card .table-attack .case-attack {
                 width: 3rem;
                 height: 3rem;
             }
 
+/* L'animation d'apparition fluide de ta modale */
 @keyframes apparition {
     from {
-        transform: translateY(-50px);
-        opacity: 0;
+        transform: translateY(-50px); /* Pars de légèrement plus haut */
+        opacity: 0; /* Totalement transparent */
     }
 
     to {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(0); /* Arrive à sa position normale */
+        opacity: 1; /* Totalement opaque */
     }
 }

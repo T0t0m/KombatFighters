@@ -1,16 +1,36 @@
-﻿@inherits LayoutComponentBase
+﻿@* Cette ligne est obligatoire pour un Layout. 
+  Elle indique à Blazor : "Ce fichier n'est pas une simple page, c'est un conteneur qui va hériter des propriétés de base d'un gabarit." 
+*@
+@inherits LayoutComponentBase
+
 <div class="page">
+    
+    @* LA BARRE LATÉRALE (Le menu) *@
     <div class="sidebar">
+        @* Ici, on appelle un autre fichier de ton projet : NavMenu.razor.
+          C'est lui qui contient la liste de tes liens de navigation (Accueil, Compteur, etc.).
+        *@
         <NavMenu />
     </div>
 
+    @* LE RESTE DE LA PAGE (À droite du menu) *@
     <main>
+        
+        @* LA BARRE SUPÉRIEURE *@
         <div class="top-row px-4">
+            @* Un simple lien HTML qui ouvre la documentation Microsoft dans un nouvel onglet *@
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
         </div>
 
+        @* LA ZONE DE CONTENU DYNAMIQUE *@
         <article class="content px-4">
+            @* C'EST LE MOT MAGIQUE !
+              C'est ici que Blazor va injecter le contenu spécifique de chaque page 
+              (par exemple, le texte de ta page d'accueil ou de ton jeu de combat) 
+              selon l'URL demandée par l'utilisateur.
+            *@
             @Body
         </article>
+        
     </main>
 </div>
