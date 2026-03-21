@@ -18,6 +18,16 @@
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="KombatFighters.styles.css" rel="stylesheet" />
+    <script>
+        window.telechargerFichier = (nomFichier, base64) => {
+            const link = document.createElement('a');
+            link.download = nomFichier;
+            link.href = "data:application/pdf;base64," + base64;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 </head>
 
 <body>

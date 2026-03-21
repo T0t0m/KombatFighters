@@ -1,0 +1,114 @@
+﻿/* --- DESIGN DE LA CARTE --- */
+.carte-combat {
+    width: 250px;
+    height: 380px;
+    margin: 0 auto;
+    border: 4px solid black;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.05)), repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.05));
+    background-size: 20px 20px;
+}
+
+.carte-header {
+    display: flex;
+    gap: 6px;
+    height: 80px;
+}
+
+/* Grille 3x3 sur la carte */
+.carte-grille {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 3px solid black;
+    background-color: white;
+}
+
+.grille-case {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Les stats Degat et Energie */
+.carte-stats {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stat-box {
+    flex: 1;
+    border: 3px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-weight: bold;
+    font-family: 'Impact', sans-serif;
+    font-size: 1.2rem;
+}
+
+.stat-degat {
+    background-color: #b500b5;
+    color: black;
+}
+
+.stat-energie {
+    background-color: #00a000;
+    color: black;
+}
+
+/* Image centrale (Recto) */
+.carte-image-container {
+    flex: 1;
+    border: 4px solid black;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carte-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carte-image-placeholder {
+    color: #ccc;
+    font-weight: bold;
+}
+
+/* Titre en bas */
+.carte-titre-box {
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Impact', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+/* --- NOUVEAU : Design pour le dos de la carte (Verso) --- */
+.carte-verso-container {
+    flex: 1; /* Prend toute la hauteur de la carte (380px) */
+    border: 4px solid black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
