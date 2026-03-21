@@ -72,9 +72,15 @@
                         color: #555;
                     }
 
+        .page-structure .menu-creator .btn-pdf {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            margin-top: 20px;
+        }
+
     /* -- ZONE DROITE (ÉDITION & APERÇU) -- */
     .page-structure .creator-view {
-        flex: 1; /* Prend tout l'espace restant */
+        flex: 1;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -90,47 +96,98 @@
 
         /* 1. Zone du formulaire en haut */
         .page-structure .creator-view .form-creator {
-            min-height: 250px; /* Modifié pour que le contenu ne déborde plus ! */
+            min-height: 175px;
         }
 
             .page-structure .creator-view .form-creator .element-form {
+                padding: 0 1rem;
                 display: flex;
-                gap: 1rem;
-                align-items: flex-start;
+                gap: 2.5rem;
             }
 
-            .page-structure .creator-view .form-creator .grid-editor {
-                display: grid;
-                grid-template-columns: repeat(3, 30px);
-                grid-template-rows: repeat(3, 30px);
-                border: 2px solid black;
-                width: max-content;
+                .page-structure .creator-view .form-creator .element-form .global-element {
+                    flex: 1;
+                }
+
+                .page-structure .creator-view .form-creator .element-form .attack-grid {
+                    flex: 0 0 120px;
+                }
+
+                    .page-structure .creator-view .form-creator .element-form .attack-grid .grid-editor {
+                        display: grid;
+                        grid-template-columns: repeat(3, 30px);
+                        grid-template-rows: repeat(3, 30px);
+                        border: 2px solid black;
+                        width: max-content;
+                        background-color: white;
+                    }
+
+                        .page-structure .creator-view .form-creator .element-form .attack-grid .grid-editor .grid-cell-edit {
+                            border: 1px solid #ccc;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-weight: bold;
+                        }
+
+                            .page-structure .creator-view .form-creator .element-form .attack-grid .grid-editor .grid-cell-edit:hover {
+                                background-color: #f0f0f0;
+                            }
+
+                .page-structure .creator-view .form-creator .element-form .row-stats,
+                .page-structure .creator-view .form-creator .element-form .row-caracter {
+                    min-width: 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                .page-structure .creator-view .form-creator .element-form .row-stats {
+                    flex: 1;
+                }
+
+                .page-structure .creator-view .form-creator .element-form .row-caracter {
+                    flex: 2;
+                }
+
+                .page-structure .creator-view .form-creator .element-form input {
+                    width: 100%;
+                    border: solid 1px #ccc;
+                    border-radius: 8px;
+                    padding: 0.2rem 0.5rem;
+                }
+
+            /* États de la petite grille interactive */
+            .page-structure .creator-view .form-creator .grid-editor .state-0 {
                 background-color: white;
             }
 
-                .page-structure .creator-view .form-creator .grid-editor .grid-cell-edit {
-                    border: 1px solid #ccc;
-                    cursor: pointer;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+            .page-structure .creator-view .form-creator .grid-editor .state-1 {
+                background-color: red;
+            }
+
+            .page-structure .creator-view .form-creator .caracter-img .card-background {
+                margin-top: 10px;
+                display: block;
+            }
+
+            .page-structure .creator-view .form-creator .info-carte-standard {
+                height: 100%;
+                padding: 0.5rem;
+                text-align: center;
+                background-color: #e9ecef;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+            }
+
+                .page-structure .creator-view .form-creator .info-carte-standard .title {
                     font-weight: bold;
+                    color: #555;
                 }
 
-                    .page-structure .creator-view .form-creator .grid-editor .grid-cell-edit:hover {
-                        background-color: #f0f0f0;
-                    }
-
-                /* États de la petite grille interactive */
-                .page-structure .creator-view .form-creator .grid-editor .state-0 {
-                    background-color: white;
-                }
-
-                .page-structure .creator-view .form-creator .grid-editor .state-1 {
-                    background-color: red;
-                }
-
-                .page-structure .creator-view .form-creator .grid-editor .state-2 {
-                    background-color: white;
-                    color: black;
+                .page-structure .creator-view .form-creator .info-carte-standard .describe {
+                    font-size: 0.9rem;
+                    color: #666;
+                    margin-bottom: 0;
                 }

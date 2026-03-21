@@ -38,7 +38,7 @@
             }
         </div>
         
-        <button class="action-button" @onclick="GenererPDF" style="background-color: #d4edda; border-color: #c3e6cb; margin-top: 20px;">
+        <button class="action-button btn-pdf" @onclick="GenererPDF">
             <p>📄 Télécharger le PDF</p>
         </button>
     </div>
@@ -49,17 +49,17 @@
                 
                 @if (carteSelectionnee == null)
                 {
-                    <h4 style="margin-top: 0;">Paramètres globaux</h4>
+                    <h4>Paramètres globaux</h4>
                     <div class="element-form">
-                        <div class="color-background" style="flex: 1;">
+                        <div class="color-background global-element">
                             <label for="color">Couleur de fond par défaut</label><br />
                             <input class="input" type="color" name="color" @bind="couleurDeFond" @bind:event="oninput" />
                         </div>
-                        <div class="recto-card" style="flex: 1;">
+                        <div class="recto-card global-element">
                             <label for="file">Image du personnage globale</label><br />
                             <InputFile class="input" OnChange="ChargerImagePersonnageGlobale" accept="image/*" />
                         </div>
-                        <div class="recto-card" style="flex: 1;">
+                        <div class="recto-card global-element">
                             <label for="file">Dos de la carte (Verso global)</label><br />
                             <InputFile class="input" OnChange="ChargerImageVersoGlobale" accept="image/*" />
                         </div>
@@ -67,28 +67,13 @@
                 }
                 else
                 {
-                    <h4 style="margin-top: 0;">Édition de la carte</h4>
+                    <h4>Édition de la carte</h4>
                     
                     @if (carteSelectionnee.EstSpeciale)
                     {
-                        <div class="element-form" style="margin-bottom: 10px;">
-                            <div style="flex: 2;">
-                                <label>Nom de l'attaque :</label><br />
-                                <input class="input" type="text" @bind="carteSelectionnee.Titre" @bind:event="oninput" style="width: 100%;" />
-                            </div>
-                            <div style="flex: 1;">
-                                <label>Dégâts :</label><br />
-                                <input class="input" type="number" @bind="carteSelectionnee.Degat" @bind:event="oninput" style="width: 100%;" />
-                            </div>
-                            <div style="flex: 1;">
-                                <label>Énergie :</label><br />
-                                <input class="input" type="number" @bind="carteSelectionnee.Energie" @bind:event="oninput" style="width: 100%;" />
-                            </div>
-                        </div>
-
                         <div class="element-form">
-                            <div style="flex: 1;">
-                                <label>Zone d'attaque (Cliquez pour modifier) :</label><br />
+                            <div class="attack-grid">
+                                <label>Zone d'attaque :</label>
                                 <div class="grid-editor">
                                     @for (int i = 0; i < 9; i++)
                                     {
@@ -99,23 +84,36 @@
                                         </div>
                                     }
                                 </div>
-                                <small style="color: gray;">Vide -> Attaque (Rouge)</small>
                             </div>
+                            <div class="row-stats">
+                                <div class="col-stat">
+                                    <label>Dégâts :</label><br />
+                                    <input class="input" type="number" @bind="carteSelectionnee.Degat" @bind:event="oninput" />
+                                </div>
+                                <div class="col-stat">
+                                    <label>Énergie :</label><br />
+                                    <input class="input" type="number" @bind="carteSelectionnee.Energie" @bind:event="oninput" />
+                                </div>
+                            </div>
+
+                            <div class="row-caracter">
+                                <div class="col-name">
+                                    <label>Nom de l'attaque :</label><br />
+                                    <input class="input" type="text" @bind="carteSelectionnee.Titre" @bind:event="oninput" />
+                                </div>
                             
-                            <div style="flex: 1;">
-                                <label>Image du personnage (Spécifique) :</label><br />
-                                <InputFile class="input" OnChange="ChargerImageCarte" accept="image/*" />
-                                
-                                <label style="margin-top: 10px; display: block;">Couleur de fond spécifique :</label>
-                                <input class="input" type="color" @bind="carteSelectionnee.CouleurFond" @bind:event="oninput" />
+                                <div class="caracter-img">
+                                    <label>Image du personnage :</label><br />
+                                    <InputFile class="input" OnChange="ChargerImageCarte" accept="image/*" />
+                                </div>
                             </div>
                         </div>
                     }
                     else
                     {
-                        <div style="padding: 15px; text-align: center; background-color: #e9ecef; border-radius: 8px; border: 1px solid #ccc;">
-                            <p style="margin-top: 0; font-weight: bold; color: #555;">Ceci est une carte standard du jeu.</p>
-                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 0;">
+                        <div class="info-carte-standard">
+                            <p class="title">Ceci est une carte standard du jeu.</p>
+                            <p class="describe">
                                 Ses statistiques, son nom et sa zone d'attaque sont dictés par les règles.<br />
                                 Elle utilisera l'image globale du personnage définie dans le "Style général".
                             </p>
@@ -138,15 +136,12 @@
             }
             else
             {
-                <div style="opacity: 0.5;">
+                <div>
                     <CarteTemplate Carte="new CarteInfo()"
                                    CouleurGlobale="@couleurDeFond"
                                    ImageVersoGlobale="@imageVersoGlobale"
                                    AfficherVerso="true" />
                 </div>
-                <p style="text-align: center; color: #666; font-style: italic; margin-top: 10px;">
-                    Sélectionnez une carte pour l'éditer.
-                </p>
             }
         </div>
         

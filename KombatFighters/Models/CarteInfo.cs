@@ -9,7 +9,6 @@
         public string ImageUrl { get; set; } = "";
         public string CouleurFond { get; set; } = "";
         public bool EstSpeciale { get; set; } = false;
-
         public int[] GrilleAttaque { get; set; } = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     }
 }
