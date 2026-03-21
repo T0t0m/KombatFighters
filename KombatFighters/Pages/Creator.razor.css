@@ -1,62 +1,236 @@
-﻿body {
-}
-
+﻿/* -- Votre structure Flexbox existante -- */
 .page-structure {
-    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start; /* Évite que les colonnes s'étirent inutilement en hauteur */
 }
 
-    .page-structure .global-form {
+    /* -- ZONE GAUCHE (MENU) -- */
+    .page-structure .menu-creator {
+        flex: 0 0 250px; /* Un peu plus large pour que le texte respire */
+        background-color: #f0f0f0;
+        border-radius: 1rem;
+        padding: 1rem;
     }
 
-        .page-structure .global-form .inner-form {
+        .page-structure .menu-creator .action-button {
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            text-align: left;
             display: flex;
-            flex-wrap: nowrap;
-            gap: 2rem;
-            margin: 0 1rem;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
         }
 
-            .page-structure .global-form .inner-form .color-background,
-            .page-structure .global-form .inner-form .recto-card {
+            .page-structure .menu-creator .action-button:hover {
+                background-color: #e9ecef;
+            }
+
+        .page-structure .menu-creator .style-card-container {
+            position: relative;
+        }
+
+            .page-structure .menu-creator .style-card-container .dropdown-content {
                 display: flex;
                 flex-direction: column;
+                gap: 5px;
+                background-color: white;
+                border: 1px solid #ccc;
+                border-radius: 0.5rem;
+                padding: 10px;
+                max-height: 400px;
+                overflow-y: auto;
             }
 
-                .page-structure .global-form .inner-form .color-background .input,
-                .page-structure .global-form .inner-form .recto-card .input {
-                    height: 100%;
-                    width: 100%;
-                    background-color: #ffb4b4;
-                    border-radius: 1rem;
+                .page-structure .menu-creator .style-card-container .dropdown-content .type-card {
+                    padding: 10px;
+                    border: 1px solid #eee;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.2s;
                 }
 
-    .page-structure .list-card {
+                    .page-structure .menu-creator .style-card-container .dropdown-content .type-card:hover {
+                        background-color: #f8f9fa;
+                        border-color: #007bff;
+                    }
+
+                    .page-structure .menu-creator .style-card-container .dropdown-content .type-card .describe-card h4 {
+                        margin: 0 0 5px 0;
+                        font-size: 1rem;
+                    }
+
+                    .page-structure .menu-creator .style-card-container .dropdown-content .type-card .describe-card p {
+                        margin: 0;
+                        font-size: 0.85rem;
+                        color: #555;
+                    }
+
+    /* -- ZONE DROITE (ÉDITION & APERÇU) -- */
+    .page-structure .creator-view {
+        flex: 1; /* Prend tout l'espace restant */
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 1rem;
-        margin: 1rem;
     }
 
-        .page-structure .list-card .type-card {
-            flex: 0 0 calc((100% / 3) - (2rem / 3));
-            background-color: #faf7f7;
-            border-radius: 1rem;
+        .page-structure .creator-view .form-creator,
+        .page-structure .creator-view .preview {
+            flex: 1;
             padding: 1rem;
-            display: flex;
-            gap: 1rem;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
+            background-color: #f0f0f0;
+            border-radius: 1rem;
         }
 
-            .page-structure .list-card .type-card:hover {
-                background-color: #e7e3e3;
-                cursor: pointer;
+        /* 1. Zone du formulaire en haut */
+        .page-structure .creator-view .form-creator {
+            min-height: 250px; /* Modifié pour que le contenu ne déborde plus ! */
+        }
+
+            .page-structure .creator-view .form-creator .element-form {
+                display: flex;
+                gap: 1rem;
+                align-items: flex-start;
             }
 
-            .page-structure .list-card .type-card .img-card {
-                flex: auto;
-                max-width: 100px;
+            .page-structure .creator-view .form-creator .grid-editor {
+                display: grid;
+                grid-template-columns: repeat(3, 30px);
+                grid-template-rows: repeat(3, 30px);
+                border: 2px solid black;
+                width: max-content;
+                background-color: white;
             }
 
-            .page-structure .list-card .type-card .describe-card {
-                flex: auto;
+                .page-structure .creator-view .form-creator .grid-editor .grid-cell-edit {
+                    border: 1px solid #ccc;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: bold;
+                }
+
+                    .page-structure .creator-view .form-creator .grid-editor .grid-cell-edit:hover {
+                        background-color: #f0f0f0;
+                    }
+
+                /* États de la petite grille interactive */
+                .page-structure .creator-view .form-creator .grid-editor .state-0 {
+                    background-color: white;
+                }
+
+                .page-structure .creator-view .form-creator .grid-editor .state-1 {
+                    background-color: red;
+                }
+
+                .page-structure .creator-view .form-creator .grid-editor .state-2 {
+                    background-color: white;
+                    color: black;
+                }
+
+        /* 2. Zone de l'aperçu de la carte en bas */
+        .page-structure .creator-view .preview .carte-combat {
+            width: 250px;
+            height: 380px;
+            margin: 0 auto;
+            border: 4px solid black;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.05)), repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.05));
+            background-size: 20px 20px;
+        }
+
+            .page-structure .creator-view .preview .carte-combat .carte-header {
+                display: flex;
+                gap: 6px;
+                height: 80px;
+            }
+
+                .page-structure .creator-view .preview .carte-combat .carte-header .carte-grille {
+                    flex: 1;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-rows: repeat(3, 1fr);
+                    border: 3px solid black;
+                    background-color: white;
+                }
+
+                    .page-structure .creator-view .preview .carte-combat .carte-header .carte-grille .grille-case {
+                        border: 1px solid black;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: bold;
+                        font-size: 1.2rem;
+                    }
+
+                .page-structure .creator-view .preview .carte-combat .carte-header .carte-stats {
+                    flex: 1.5;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                }
+
+                    .page-structure .creator-view .preview .carte-combat .carte-header .carte-stats .stat-box {
+                        flex: 1;
+                        border: 3px solid black;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0 10px;
+                        font-weight: bold;
+                        font-family: 'Impact', sans-serif;
+                        font-size: 1.2rem;
+                    }
+
+                    .page-structure .creator-view .preview .carte-combat .carte-header .carte-stats .stat-degat {
+                        background-color: #b500b5;
+                        color: black;
+                    }
+
+                    .page-structure .creator-view .preview .carte-combat .carte-header .carte-stats .stat-energie {
+                        background-color: #00a000;
+                        color: black;
+                    }
+
+            .page-structure .creator-view .preview .carte-combat .carte-image-container {
+                flex: 1;
+                border: 4px solid black;
+                background-color: white;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .page-structure .creator-view .preview .carte-combat .carte-image-container .carte-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .page-structure .creator-view .preview .carte-combat .carte-image-container .carte-image-placeholder {
+                    color: #ccc;
+                    font-weight: bold;
+                }
+
+            .page-structure .creator-view .preview .carte-combat .carte-titre-box {
+                height: 50px;
+                background-color: black;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'Impact', sans-serif;
+                font-size: 2rem;
+                letter-spacing: 2px;
             }

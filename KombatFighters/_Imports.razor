@@ -1,10 +1,27 @@
-﻿@using System.Net.Http
+﻿@* 1. REQUÊTES RÉSEAU (Pour communiquer avec un serveur ou une API) *@
+@* Permet de faire des requêtes HTTP classiques (GET, POST, etc.) *@
+@using System.Net.Http
+@* Permet d'envoyer et de recevoir facilement des données au format JSON via HTTP *@
 @using System.Net.Http.Json
+
+@* 2. LES FONDATIONS DE BLAZOR *@
+@* Outils pour créer et valider des formulaires web *@
 @using Microsoft.AspNetCore.Components.Forms
+@* Outils pour la navigation entre tes pages *@
 @using Microsoft.AspNetCore.Components.Routing
+@* Outils pour les événements web de base (clics de souris, frappes clavier, etc.) *@
 @using Microsoft.AspNetCore.Components.Web
+@* Permet d'afficher des listes géantes de manière performante sans faire ramer le navigateur *@
 @using Microsoft.AspNetCore.Components.Web.Virtualization
+@* Outils HTTP spécifiquement optimisés pour fonctionner dans le navigateur via WebAssembly *@
 @using Microsoft.AspNetCore.Components.WebAssembly.Http
+
+@* 3. JAVASCRIPT *@
+@* Le pont (Interop) qui permet à ton code C# de parler à du JavaScript, et inversement *@
 @using Microsoft.JSInterop
+
+@* 4. TON PROJET (Les dossiers de ta propre application) *@
+@* Donne accès aux classes et modèles principaux de ton jeu/application *@
 @using KombatFighters
+@* Donne accès aux composants visuels partagés (comme ton MainLayout ou tes menus) *@
 @using KombatFighters.Layout

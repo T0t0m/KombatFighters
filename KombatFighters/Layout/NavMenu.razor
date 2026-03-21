@@ -1,32 +1,65 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@* --- PARTIE 1 : L'ENTÊTE DU MENU (Visible surtout sur mobile) --- *@
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
+        @* Le nom de ton application, qui sert aussi de lien vers l'accueil *@
         <a class="navbar-brand" href="">KombatFighters</a>
+        
+        @* Le bouton "Hamburger" qui apparaît sur les petits écrans.
+           L'événement '@onclick="ToggleNavMenu"' demande à Blazor d'exécuter 
+           la méthode C# ToggleNavMenu() à chaque clic. *@
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 </div>
 
+@* --- PARTIE 2 : LA LISTE DES LIENS --- *@
+@* La classe CSS change dynamiquement grâce à la variable @NavMenuCssClass. 
+   C'est ce qui permet de cacher ou d'afficher le menu sur mobile. *@
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="flex-column">
+        
+        @* Lien vers l'accueil *@
         <div class="nav-item px-3">
+            @* href="" pointe vers la racine du site.
+               Match="NavLinkMatch.All" signifie que ce lien ne sera mis en surbrillance 
+               que si l'URL est EXACTEMENT vide (la racine). *@
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
             </NavLink>
         </div>
+        
+        @* Lien vers la page de création *@
         <div class="nav-item px-3">
+            @* href="creator" indique au routeur d'aller chercher la page qui a "@page "/creator"" *@
             <NavLink class="nav-link" href="creator">
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Création
             </NavLink>
         </div>
+        
     </nav>
 </div>
 
+@* --- PARTIE 3 : LA LOGIQUE C# --- *@
 @code {
+    /// <summary>
+    /// Indique si le menu de navigation (version mobile) est actuellement replié ou non.
+    /// Vrai par défaut (le menu est caché).
+    /// </summary>
     private bool collapseNavMenu = true;
 
+    /// <summary>
+    /// Obtient la classe CSS à appliquer au conteneur du menu en fonction de son état.
+    /// </summary>
+    /// <value>
+    /// Retourne "collapse" pour cacher le menu, ou <c>null</c> pour l'afficher.
+    /// </value>
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
+    /// <summary>
+    /// Bascule l'état d'affichage du menu de navigation.
+    /// Cette méthode est déclenchée par le clic sur le bouton "hamburger" ou lorsqu'on clique sur un lien pour fermer le menu.
+    /// </summary>
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;

@@ -1,12 +1,35 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@* Le composant <Router> écoute les changements d'URL. 
+  'AppAssembly' lui indique où chercher les pages de ton application (ici, dans l'assembly actuel). 
+*@
+<Router AppAssembly="@typeof(App).Assembly">
+    
+    @* SECTION 1 : L'URL EST TROUVÉE *@
     <Found Context="routeData">
+        @* RouteView se charge d'afficher la bonne page.
+          'DefaultLayout' indique que, par défaut, la page sera insérée dans 'MainLayout' 
+          (ta maquette de base avec le menu, le footer, etc.).
+        *@
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        
+        @* FocusOnNavigate est utile pour l'accessibilité.
+          Après un changement de page, il force le focus sur le premier titre (<h1>). 
+          Cela aide les lecteurs d'écran pour les personnes malvoyantes.
+        *@
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
+
+    @* SECTION 2 : L'URL N'EST PAS TROUVÉE (Erreur 404) *@
     <NotFound>
+        @* Change le titre de l'onglet du navigateur *@
         <PageTitle>Not found</PageTitle>
+        
+        @* LayoutView permet d'afficher le message d'erreur tout en gardant
+          ta maquette de base (MainLayout), pour que le site reste joli.
+        *@
         <LayoutView Layout="@typeof(MainLayout)">
+            @* Le message affiché à l'utilisateur *@
             <p role="alert">Sorry, there's nothing at this address.</p>
         </LayoutView>
     </NotFound>
+
 </Router>

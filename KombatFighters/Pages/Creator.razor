@@ -1,117 +1,195 @@
 ﻿@page "/creator"
+@using KombatFighters.Models
+@using KombatFighters.Shared
 
 <PageTitle>Kombat Fighters Creator</PageTitle>
 
 <h3>Création de cartes</h3>
 
 <div class="page-structure">
-    <form action="/" method="post" class="global-form">
-        <h4>Style général</h4>
-        <div class="inner-form">
-            <div class="color-background">
-                <label for="color">Couleur de fond</label>
-                <input class="input" type="color" name="color" />
-            </div>
-            <div class="recto-card">
-                <label for="file">Recto des cartes</label>
-                @* <input type="image" name="image" src="" alt="image input" /> *@
-                <input class="input" type="file" accept="image/*, text/*" name="file" />
-            </div>
-        </div>
-    </form>
-    <hr />
-    <div class="card-section">
-        <h4>Style par carte</h4>
-        <div class="list-card">
-            @foreach (var carte in mesCartes)
+    
+    <div class="menu-creator">
+        
+        <button class="global-style-card action-button" @onclick="DeselectionnerCarte">
+            <p>Style général</p>
+        </button>
+
+        <div class="style-card-container">
+            <button class="style-card action-button" @onclick="ToggleMenu">
+                <p>Style par carte</p>
+                <span class="arrow @(isMenuOpen ? "open" : "")">▼</span>
+            </button>
+
+            @if (isMenuOpen)
             {
-                <div class="type-card" @onclick="() => OuvrirDialogue(carte)">
-                    @* TODO : rendre la div cliquable *@
-                    <div class="img-card">
-                        @* TODO : insérer une image d'exemple de carte *@
-                        <p>Image : @carte.Id</p>
-                    </div>
-                    <div class="describe-card">
-                        @* TODO : insérer une description de carte *@
-                        <h4>@carte.Titre</h4>
-                        <p>@carte.Description</p>
-                    </div>
+                <div class="dropdown-content">
+                    @foreach (var carte in mesCartes)
+                    {
+                        <div class="type-card" @onclick="() => SelectionnerCarte(carte)">
+                            <div class="describe-card">
+                                <h4>@carte.Titre</h4>
+                                <p>Dégâts: @carte.Degat | Énergie: @carte.Energie</p>
+                            </div>
+                        </div>
+                    }
                 </div>
             }
         </div>
     </div>
-</div>
 
-@* BOITE DE DIALOGUE (MODALE) *@
-@* Elle ne s'affiche que si une carte a été cliquée (donc n'est pas null) *@
-@if (carteSelectionnee != null)
-{
-    <div class="modal-overlay" @onclick="FermerDialogue">
+    <div class="creator-view">
+        
+        <div class="form-creator">
+            <div class="inner-form">
+                
+                @if (carteSelectionnee == null)
+                {
+                    <h4 style="margin-top: 0;">Paramètres globaux</h4>
+                    <div class="element-form">
+                        <div class="color-background" style="flex: 1;">
+                            <label for="color">Couleur de fond par défaut</label><br />
+                            <input class="input" type="color" name="color" @bind="couleurDeFond" @bind:event="oninput" />
+                        </div>
+                        <div class="recto-card" style="flex: 1;">
+                            <label for="file">Dos de la carte (Verso global)</label><br />
+                            <input class="input" type="file" accept="image/*" />
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h4 style="margin-top: 0;">Édition de la carte</h4>
+                    
+                    <div class="element-form" style="margin-bottom: 10px;">
+                        <div style="flex: 2;">
+                            <label>Nom de l'attaque :</label><br />
+                            <input class="input" type="text" @bind="carteSelectionnee.Titre" @bind:event="oninput" style="width: 100%;" />
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Dégâts :</label><br />
+                            <input class="input" type="number" @bind="carteSelectionnee.Degat" @bind:event="oninput" style="width: 100%;" />
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Énergie :</label><br />
+                            <input class="input" type="number" @bind="carteSelectionnee.Energie" @bind:event="oninput" style="width: 100%;" />
+                        </div>
+                    </div>
 
-        <div class="modal-box" @onclick:stopPropagation="true">
-
-            <div class="header-box">
-                <h3>@carteSelectionnee.Titre</h3>
-                <button @onclick="FermerDialogue" style="cursor:pointer;">❌</button>
+                    <div class="element-form">
+                        <div style="flex: 1;">
+                            <label>Zone d'attaque (Cliquez pour modifier) :</label><br />
+                            <div class="grid-editor">
+                                @for (int i = 0; i < 9; i++)
+                                {
+                                    int index = i; // Obligatoire en C# pour que le clic utilise le bon numéro
+                                    
+                                    <div class="grid-cell-edit state-@carteSelectionnee.GrilleAttaque[index]"
+                                         @onclick="() => ToggleGridState(index)">
+                                        @(index == 4 ? "X" : "")
+                                    </div>
+                                }
+                            </div>
+                            <small style="color: gray;">Vide -> Attaque (Rouge)</small>
+                        </div>
+                        
+                        <div style="flex: 1;">
+                            <label>Image du personnage :</label><br />
+                            <InputFile class="input" OnChange="ChargerImageCarte" accept="image/*" />
+                            
+                            <label style="margin-top: 10px; display: block;">Couleur de fond spécifique :</label>
+                            <input class="input" type="color" @bind="carteSelectionnee.CouleurFond" @bind:event="oninput" />
+                        </div>
+                    </div>
+                }
             </div>
-
-            <hr />
-            <div class="form-card">
-                <div class="other-info">
-                    <input type="text" name="name" value="" />
-                    <input type="file" name="name" value="" />
-                </div>
-                <div class="table-attack">
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                    <input class="case-attack" type="checkbox" name="name" value="" />
-                </div>
-            </div>
-
-            <button class="btn btn-primary">Sauvegarder</button>
         </div>
 
+        <div class="preview">
+            <h4>Aperçu en direct</h4>
+            
+            @if (carteSelectionnee != null)
+            {
+                <CarteTemplate 
+                    Carte="carteSelectionnee" 
+                    CouleurGlobale="@couleurDeFond"
+                    ImagePersonnageGlobale="@imagePersonnageGlobale"
+                    ImageVersoGlobale="@imageVersoGlobale"
+                    AfficherVerso="false" />
+            }
+            else
+            {
+                <div style="opacity: 0.5;">
+                    <CarteTemplate 
+                        Carte="new CarteInfo()" 
+                        CouleurGlobale="@couleurDeFond"
+                        ImageVersoGlobale="@imageVersoGlobale"
+                        AfficherVerso="true" />
+                </div>
+                <p style="text-align: center; color: #666; font-style: italic; margin-top: 10px;">
+                    Sélectionnez une carte pour l'éditer.
+                </p>
+            }
+        </div>
+        
     </div>
-}
+</div>
 
 @code {
-    // 1. Définition d'une petite classe pour représenter une carte (temporaire)
-    public class CarteInfo
-    {
-        public int Id { get; set; }
-        public string Titre { get; set; }
-        public string Description { get; set; }
-    }
-
-    // 2. Variable qui retient quelle carte est actuellement ouverte (null = aucune)
+    // --- Variables d'état de la page ---
+    private bool isMenuOpen = false;
     private CarteInfo? carteSelectionnee = null;
+    private string couleurDeFond = "#a00000"; // Couleur globale par défaut
 
-    // 3. Liste de fausses données pour tester l'affichage
+    // --- Méthodes de navigation ---
+    private void ToggleMenu() => isMenuOpen = !isMenuOpen; // Ouvre/Ferme la liste
+    private void SelectionnerCarte(CarteInfo carte) => carteSelectionnee = carte; // Charge une carte dans l'éditeur
+    private void DeselectionnerCarte() => carteSelectionnee = null; // Retourne aux paramètres globaux
+
+    // --- Fausses données pour tester ---
     private List<CarteInfo> mesCartes = new List<CarteInfo>
     {
-        new CarteInfo { Id = 1, Titre = "Guerrier de Feu", Description = "Attaque brûlante" },
-        new CarteInfo { Id = 2, Titre = "Dragon d'Eau", Description = "Défense impénétrable" },
-        new CarteInfo { Id = 3, Titre = "Ninja de l'Ombre", Description = "Rapide et discret" },
-        new CarteInfo { Id = 4, Titre = "Golem de Pierre", Description = "Lourd et puissant" },
-        new CarteInfo { Id = 5, Titre = "Archer Elfe", Description = "Précision mortelle" },
-        new CarteInfo { Id = 6, Titre = "Mage Noir", Description = "Magie interdite" },
+        // J'ai remplacé les anciens '2' par des '0' pour correspondre à notre nouvelle règle.
+        new CarteInfo { Id = 1, Titre = "BAS", Degat = 10, Energie = 2, GrilleAttaque = new int[]{ 0,0,0, 0,0,0, 0,1,0 } },
+        new CarteInfo { Id = 2, Titre = "AVANT", Degat = 15, Energie = 3, GrilleAttaque = new int[]{ 0,0,0, 0,0,1, 0,0,0 } }
     };
 
-    // 4. Méthode appelée quand on clique sur une carte
-    private void OuvrirDialogue(CarteInfo carte)
+    // --- Méthode pour l'éditeur de Grille 3x3 ---
+    // Appelée quand on clique sur une case de l'éditeur dans le formulaire
+    private void ToggleGridState(int index)
     {
-        carteSelectionnee = carte;
+        if (carteSelectionnee != null)
+        {
+            // On inverse l'état : si c'est 0 (blanc) ça passe à 1 (rouge), et vice-versa.
+            if (carteSelectionnee.GrilleAttaque[index] == 0)
+            {
+                carteSelectionnee.GrilleAttaque[index] = 1;
+            }
+            else
+            {
+                carteSelectionnee.GrilleAttaque[index] = 0;
+            }
+        }
     }
 
-    // 5. Méthode pour fermer
-    private void FermerDialogue()
+    // --- Méthode pour charger l'image ---
+    // Appelée quand l'utilisateur choisit un fichier via le bouton <InputFile>
+    private async Task ChargerImageCarte(InputFileChangeEventArgs e)
     {
-        carteSelectionnee = null;
+        var fichier = e.File;
+        // On vérifie qu'un fichier a bien été choisi et qu'une carte est en cours d'édition
+        if (fichier != null && carteSelectionnee != null)
+        {
+            // 1. On redimensionne l'image pour éviter de ralentir le navigateur
+            var image = await fichier.RequestImageFileAsync(fichier.ContentType, 600, 600);
+            
+            // 2. On prépare un espace mémoire (buffer) pour lire l'image
+            var buffer = new byte[image.Size];
+            
+            // 3. On lit l'image dans ce buffer (limite de sécurité à 5 Mo)
+            await image.OpenReadStream(maxAllowedSize: 1024 * 1024 * 5).ReadAsync(buffer);
+            
+            // 4. On transforme les données en une URL (Base64) lisible directement par une balise <img>
+            carteSelectionnee.ImageUrl = $"data:{fichier.ContentType};base64,{Convert.ToBase64String(buffer)}";
+        }
     }
 }

@@ -1,7 +1,15 @@
-﻿@page "/"
+﻿@* La directive @page est cruciale. 
+  Le "/" signifie que c'est la page racine (l'accueil). 
+  Si tu mettais @page "/bonjour", cette page s'afficherait sur tonsite.com/bonjour.
+*@
+@page "/"
 
+@* Change dynamiquement le titre de l'onglet du navigateur web. 
+  Sans ça, toutes tes pages auraient le même titre par défaut.
+*@
 <PageTitle>Kombat Fighters</PageTitle>
 
+@* Le contenu HTML classique qui sera injecté dans le @Body de ton MainLayout *@
 <h1>Kombat Fighters Creator</h1>
 
 Bienvenue sur le créateur de carte pour Kombat Fighters.
