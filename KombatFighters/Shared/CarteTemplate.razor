@@ -1,0 +1,74 @@
+﻿@using KombatFighters.Models
+
+<div class="carte-combat" style="background-color: @CouleurFondFinale;">
+    
+    @if (AfficherVerso)
+    {
+        <div class="carte-verso-container">
+            @if (!string.IsNullOrEmpty(ImageVersoGlobale))
+            {
+                <img src="@ImageVersoGlobale" class="carte-image" />
+            }
+            else
+            {
+                <div class="carte-image-placeholder">Dos de la carte</div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="carte-header">
+            <div class="carte-grille">
+                @for (int i = 0; i < 9; i++)
+                {
+                    <div class="grille-case state-@Carte.GrilleAttaque[i]">
+                        @(i == 4 ? "X" : "")
+                    </div>
+                }
+            </div>
+            
+            <div class="carte-stats">
+                <div class="stat-box stat-degat">
+                    <span>DEGAT</span>
+                    <span>@Carte.Degat</span>
+                </div>
+                <div class="stat-box stat-energie">
+                    <span>ENERGIE</span>
+                    <span>@Carte.Energie</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="carte-image-container">
+            @if (!string.IsNullOrEmpty(Carte.ImageUrl))
+            {
+                <img src="@Carte.ImageUrl" class="carte-image" />
+            }
+            else if (!string.IsNullOrEmpty(ImagePersonnageGlobale))
+            {
+                <img src="@ImagePersonnageGlobale" class="carte-image" />
+            }
+            else
+            {
+                <div class="carte-image-placeholder">Image Perso</div>
+            }
+        </div>
+
+        <div class="carte-titre-box">
+            @Carte.Titre.ToUpper()
+        </div>
+    }
+</div>
+
+@code {
+    // Les paramètres que ce composant s'attend à recevoir quand on l'utilise
+    [Parameter] public CarteInfo Carte { get; set; }
+    [Parameter] public string CouleurGlobale { get; set; }
+    [Parameter] public string ImagePersonnageGlobale { get; set; }
+    [Parameter] public string ImageVersoGlobale { get; set; }
+    [Parameter] public bool AfficherVerso { get; set; } = false;
+
+    // Petite propriété calculée pour simplifier le HTML
+    private string CouleurFondFinale =>
+        string.IsNullOrEmpty(Carte.CouleurFond) ? CouleurGlobale : Carte.CouleurFond;
+}
